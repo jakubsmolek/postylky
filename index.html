@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Postýlky 120 × 60 cm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: klidný, něžný, ale věcný – srovnávací přehled pro rodiče
+   IDEA: technický list z truhlárny – výkres postýlky s kótou 120 × 60
+   PICTURE: velký čelní nákres postýlky s kótami, u každého modelu vlastní nákres s jeho funkcemi
+   COLOUR and TYPE: bílá, inkoust, bukové dřevo jako hlavní tón, modrá jako akcent; Fraunces + Figtree
+   LAYOUT: závěr nahoře, nákres, srovnávací tabulka, karty modelů, praktické poznámky */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#15130f);--ink:light-dark(#1d1b18,#efe9e0);--mute:light-dark(#6b645a,#a89f92);--line:light-dark(#e6e0d6,#332e27);--wood:light-dark(#c8894a,#d69a5c);--woodl:light-dark(#f3e4d1,#3a2c1d);--acc:light-dark(#2f6f8f,#7cb8d6);--card:light-dark(#fbf8f3,#1d1a15);--ok:light-dark(#2f6f8f,#7cb8d6);--no:light-dark(#b3443a,#e08a80)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Figtree,system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.05;text-wrap:balance;margin:0}
+h1{font-size:clamp(32px,4.6vw,50px)}h2{font-size:clamp(24px,3vw,32px);margin-bottom:16px}h3{font-size:24px}
+a{color:var(--acc)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(20px,4vw,56px);align-items:center}
+.lead{font-size:17px;max-width:62ch;color:var(--mute);margin:16px 0 0}
+.lead b{color:var(--ink)}
+.heroimg{background:var(--woodl);border-radius:20px;padding:clamp(12px,2.5vw,28px)}
+.heroimg svg{width:100%;height:auto;display:block}
+.note{font-size:13px;color:var(--mute);margin-top:14px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 18px}
+.filters label{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:999px;cursor:pointer;font-weight:600}
+.filters input{width:18px;height:18px;accent-color:var(--acc)}
+.filters label:focus-within{outline:2px solid var(--acc);outline-offset:2px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;color:var(--mute);font-size:13px}
+td.num{text-align:right;white-space:nowrap}
+.y{color:var(--ok);font-weight:700}.n{color:var(--no);font-weight:700}.m{color:var(--mute)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:20px;margin-top:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.card .pic{background:var(--woodl);border-radius:12px;padding:10px}
+.card .pic svg{width:100%;height:auto;display:block}
+.price{font-size:26px;font-weight:700;white-space:nowrap}
+.price small{font-size:14px;font-weight:400;color:var(--mute)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:13px;padding:3px 10px;border-radius:999px;background:var(--woodl)}
+.tag.on{background:var(--acc);color:var(--bg)}
+dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:0;font-size:15px}
+dt{color:var(--mute)}dd{margin:0}
+.pc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;font-size:15px}
+.pc h4{margin:0 0 4px;font-size:14px}
+.pc ul{margin:0;padding-left:18px}
+.rev{font-size:14px;color:var(--mute);border-top:1px solid var(--line);padding-top:10px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--acc);text-decoration:none;font-weight:600}
+.btn.main{background:var(--acc);color:var(--bg)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px}
+.tips div{border-top:3px solid var(--wood);padding-top:10px}
+.src{font-size:14px;color:var(--mute)}.src li{margin:3px 0}
+.hide{display:none!important}
+@media(max-width:600px){.hero{grid-template-columns:1fr}.pc{grid-template-columns:1fr}}
+.scroll{overflow-x:auto}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+@media(prefers-reduced-motion:no-preference){.card{transition:transform .2s}.card:hover{transform:translateY(-2px)}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<section class="band"><div class="wrap hero">
+  <div>
+    <h1>Rozměr 120 × 60 cm splní všech pět postýlek, stahovací bok mají jen dvě</h1>
+    <p class="lead">Přehled modelů, které jsme řešili. <b>New Baby LILLY</b> má stahovací bok i šuplík v jednom. <b>Scarlett Perta</b> má stahovací bok a k ní se dokoupí boxy pod postýlku. Zbylé tři mají jen vyndavací příčky nebo nemají nic.</p>
+    <p class="note">Ceny a parametry jsou z webů prodejců k 26. 11. 2026. Cenu LILLY na Alze zadal uživatel. Nákresy jsou orientační schémata, ne fotky – fotky najdeš přes odkazy u modelů.</p>
+  </div>
+  <div class="heroimg" id="hero"></div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <h2>Srovnání na jeden pohled</h2>
+  <div class="filters" role="group" aria-label="Filtr">
+    <label><input type="checkbox" id="fDrop"> Jen se stahovacím bokem</label>
+    <label><input type="checkbox" id="fStore"> Jen s úložným prostorem</label>
+    <label><input type="checkbox" id="fNorm"> Jen s uvedenou normou EN 716</label>
+  </div>
+  <div class="scroll"><table class="stack" id="tbl">
+    <thead><tr><th>Model</th><th>Cena</th><th>Rozměr</th><th>Stahovací bok</th><th>Úložný prostor</th><th>Materiál</th><th>Poloh roštu</th><th>EN 716</th><th>Dostupnost</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <h2>Modely podrobně</h2>
+  <div class="cards" id="cards"></div>
+</div></section>
+
+<section class="band" style="background:var(--card)"><div class="wrap">
+  <h2>Než objednáš</h2>
+  <div class="tips">
+    <div><h3 style="font-size:19px">Matrace zvlášť</h3><p>Ani jedna postýlka matraci nemá. Kupuj přesně 120 × 60 cm, aby mezi matrací a příčkami nezůstala mezera. Pro Sniglar nabízí IKEA matraci PLUTTIG za 329 Kč.</p></div>
+    <div><h3 style="font-size:19px">Prostor pod Pertou</h3><p>Nejnižší poloha roštu je 27 cm od země. Po složení změř skutečnou volnou výšku a rozteč nohou. Boxy PÄRKLA (55 × 49 × 19 cm) by se měly vejít dva vedle sebe.</p></div>
+    <div><h3 style="font-size:19px">Ověř dostupnost</h3><p>LILLY na Kukulkách hlásí zároveň „do týdne“ i „není k dispozici“, LEO je teď nedostupná. Před platbou se zeptej prodejce.</p></div>
+    <div><h3 style="font-size:19px">Stahovací bok ≠ vyndavací příčky</h3><p>Stahovací bok sjede dolů a usnadní zvedání miminka. Vyndavací příčky slouží až později, aby dítě mohlo samo vylézt.</p></div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2 style="font-size:22px">Zdroje</h2>
+  <ul class="src">
+    <li><a href="https://www.kukulky.cz/detska-postylka-new-baby-lilly-se-stahovaci-bocnici-a-suplikem-bila">Kukulky.cz – New Baby LILLY</a> (parametry, norma, cena)</li>
+    <li><a href="https://www.scarlett.cz/detske-postylky-scarlett/postylka-se-stahovacim-bokem-scarlett-perta-buk-bila-120-x-60-cm/">Scarlett.cz – Perta</a> (polohy roštu, norma, kolečka)</li>
+    <li><a href="https://www.arecenze.cz/?p=172390">aRecenze.cz – srovnání dětských postýlek 2026</a></li>
+    <li><a href="https://www.recenzopedia.cz/nabytek/detske-postylky/">Recenzopedia.cz – nejžádanější postýlky</a></li>
+    <li><a href="https://lettino.cz/cs_CZ/p/Detska-postylka-LEO-120x60-s-suplikem/638">Lettino.cz – LEO</a>, <a href="https://www.ikea.com/cz/cs/p/sniglar-detska-postylka-buk-30248537/">IKEA – Sniglar</a>, <a href="https://www.xxxlutz.cz/p/my-baby-lou-detska-postylka-60-cmx120-cm-008798000601">XXXLutz – My Baby Lou</a></li>
+    <li><a href="https://www.ikea.com/cz/en/cat/under-bed-storage-19059/f/plastic-under-bed-storage-f-materials--47675/">IKEA – plastové boxy pod postel</a> (PÄRKLA, SAMLA, SOCKERBIT)</li>
+  </ul>
+</div></section>
+
+<script>
+{
+const M=[
+ {id:'lilly',name:'New Baby LILLY',sub:'se stahovací bočnicí a šuplíkem',price:'4 037 Kč',psub:'Alza · Kukulky 5 290 Kč',drop:1,store:'Vestavěný šuplík',storeOk:1,mat:'Borovice (FSC), šuplík MDF',rost:'3 (22 / 38 / 51 cm)',norm:'EN 716-1 a 716-2:2008',normOk:1,avail:'Alza: ověř · Kukulky: nejasné',
+  dl:[['Vnější rozměr','125 × 65 × 87 cm'],['Šuplík (vnitřek)','114 × 60 × 9,5 cm'],['Hmotnost','23 kg'],['Nosnost','20 kg'],['Povrch','vodou ředitelný lak']],
+  plus:['Stahovací bok i šuplík v jednom','Bok jde stáhnout jednou rukou','Šuplík na kuličkových pojezdech, nedotýká se země','Česká značka (Baby Mix)'],
+  minus:['Borovice je měkčí než buk','Jen 3 polohy roštu','Šuplík je mělký (9,5 cm)'],
+  rev:'Ověřené recenze přesně této verze jsem nenašel. Varianta „se šuplíkem“ má na Kauflandu 4,7/5 (6 hodnocení).',
+  links:[['Alza (přírodní)','https://m.alza.cz/maxi/new-baby-detska-postylka-lilly-se-stahovaci-bocnici-a-suplikem-prirodni-d13113803.htm',1],['Kukulky (bílá)','https://www.kukulky.cz/detska-postylka-new-baby-lilly-se-stahovaci-bocnici-a-suplikem-bila']],
+  svg:{drop:1,drawer:1,white:0}},
+ {id:'perta',name:'Scarlett Perta',sub:'buk, stahovací bok + 2× IKEA PÄRKLA',price:'4 060 Kč',psub:'postýlka 3 990 + boxy 2 × 35 Kč',drop:1,store:'Volné boxy pod postýlku',storeOk:1,mat:'Masivní buk',rost:'6 (27–56 cm)',norm:'ČSN EN 716-1',normOk:1,avail:'Skladem u výrobce',
+  dl:[['Celková délka','123 cm'],['Výška čela','90 cm'],['Varianty','ECO 3 590 · bílá 3 990 · přírodní lak 4 290 Kč'],['Kolečka','nohy předvrtané, sada 180 Kč'],['Boxy PÄRKLA','55 × 49 × 19 cm, 35 Kč/ks']],
+  plus:['Tvrdé bukové dřevo','6 poloh roštu','Přímo od českého výrobce','Pod postýlku se vejde víc věcí než do šuplíku LILLY'],
+  minus:['Boxy jsou zvlášť, nevypadá to tak uceleně','Volnou výšku pod roštem je potřeba přeměřit','Kolečka nejsou v ceně'],
+  rev:'Vítěz srovnání klasických postýlek na aRecenze.cz. Na Recenzopedii má bílá verze 95 %, verze ECO 100 %.',
+  links:[['Perta bílá – scarlett.cz','https://www.scarlett.cz/detske-postylky-scarlett/postylka-se-stahovacim-bokem-scarlett-perta-buk-bila-120-x-60-cm/',1],['Perta ECO','https://www.scarlett.cz/detske-postylky-scarlett/postylka-se-stahovacim-bokem-scarlett-perta-buk-eco-120-x-60-cm/'],['Boxy IKEA','https://www.ikea.com/cz/en/cat/under-bed-storage-19059/f/plastic-under-bed-storage-f-materials--47675/']],
+  svg:{drop:1,boxes:1,white:1}},
+ {id:'leo',name:'Lettino LEO',sub:'se šuplíkem',price:'3 311 Kč',psub:'běžně 3 599 Kč',drop:0,store:'Šuplík na kolečkách',storeOk:1,mat:'Přírodní dřevo (druh neuveden)',rost:'3',norm:'EN 716-1:2017+AC:2019',normOk:1,avail:'Teď nedostupná',
+  dl:[['Šuplík','kovová výztuž, kryt, nosnost 20 kg'],['Příčky','3 vyndavací'],['Přestavba','na dětskou postel / pohovku'],['Výrobce','Lettino, Polsko'],['Záruka','2 roky']],
+  plus:['Šuplík s krytem a pevnou konstrukcí','Testovací protokol a prohlášení o shodě ke stažení','Dá se přestavět na postel'],
+  minus:['Nemá stahovací bok','Teď nedostupná','Druh dřeva neuveden'],
+  rev:'Recenze tohoto modelu jsem neověřil.',
+  links:[['Lettino.cz','https://lettino.cz/cs_CZ/p/Detska-postylka-LEO-120x60-s-suplikem/638',1]],
+  svg:{bars:1,drawer:1,white:1}},
+ {id:'sniglar',name:'IKEA Sniglar',sub:'buk',price:'1 390 Kč',psub:'matrace PLUTTIG 329 Kč',drop:0,store:'Ne (pod postýlkou 14 cm)',storeOk:0,mat:'Masivní buk',rost:'2 (neuvedeno přesně)',norm:'EN 716-1',normOk:1,avail:'Ověřuje se',
+  dl:[['Vnější rozměr','124 × 66 × 80 cm'],['Volná výška pod postýlkou','14 cm'],['Nosnost','20 kg'],['Vrácení','do 365 dní']],
+  plus:['Nejlevnější','Masivní buk','Snadné vrácení v IKEA'],
+  minus:['Nemá stahovací bok','Žádný úložný prostor, běžné boxy (18–19 cm) se pod ni nevejdou','Jednoduché provedení'],
+  rev:'4,7/5 ze 40 hodnocení na IKEA.cz. Jeden recenzent si stěžuje, že bok nejde stáhnout.',
+  links:[['IKEA.cz','https://www.ikea.com/cz/cs/p/sniglar-detska-postylka-buk-30248537/',1]],
+  svg:{white:0}},
+ {id:'lou',name:'My Baby Lou',sub:'kolekce Katja, XXXLutz',price:'1 884 Kč',psub:'akce do 30. 11. 2026, běžně 2 899 Kč',drop:0,store:'Ne',storeOk:0,mat:'Masivní buk, lakovaný',rost:'Nastavitelný (počet neuveden)',norm:'Neuvedena',normOk:0,avail:'Skladem',
+  dl:[['Příčky','3 vyndavací'],['Nosnost','cca 30 kg'],['Doprava','149 Kč, odběr na prodejně zdarma'],['Balení','124 × 14 × 70 cm, 14,5 kg']],
+  plus:['Levná, buk','Skladem, odběr v Praze na prodejně'],
+  minus:['Nemá stahovací bok ani úložný prostor','Norma EN 716 na stránce není uvedena'],
+  rev:'Recenze na stránce jsem nenašel.',
+  links:[['XXXLutz.cz','https://www.xxxlutz.cz/p/my-baby-lou-detska-postylka-60-cmx120-cm-008798000601',1]],
+  svg:{bars:1,white:0}}
+];
+
+function crib(o,w){
+  const fill=o.white?'var(--bg)':'var(--wood)',st='var(--ink)',acc='var(--acc)';
+  const top=o.drop?62:30;let s='';
+  s+=`<rect x="14" y="10" width="12" height="${o.drawer?150:150}" rx="3" fill="${fill}" stroke="${st}" stroke-width="1.5"/>`;
+  s+=`<rect x="214" y="10" width="12" height="150" rx="3" fill="${fill}" stroke="${st}" stroke-width="1.5"/>`;
+  for(let i=0;i<15;i++){const x=34+i*12.4;const rem=o.bars&&i>=6&&i<=8;
+    s+=`<rect x="${x}" y="${top+4}" width="5" height="${104-top-4}" rx="2" fill="${rem?'none':fill}" stroke="${rem?acc:st}" stroke-width="1.2" ${rem?'stroke-dasharray="3 3"':''}/>`}
+  s+=`<rect x="26" y="${top}" width="188" height="7" rx="3" fill="${fill}" stroke="${st}" stroke-width="1.5"/>`;
+  s+=`<rect x="26" y="104" width="188" height="9" rx="3" fill="${fill}" stroke="${st}" stroke-width="1.5"/>`;
+  if(o.drop){s+=`<rect x="26" y="30" width="188" height="7" rx="3" fill="none" stroke="${acc}" stroke-width="1.3" stroke-dasharray="4 3"/><path d="M120 39 V56 M113 49 L120 57 L127 49" fill="none" stroke="${acc}" stroke-width="2.2" stroke-linecap="round"/>`}
+  if(o.drawer){s+=`<rect x="30" y="118" width="180" height="30" rx="4" fill="${fill}" stroke="${acc}" stroke-width="2"/><rect x="108" y="129" width="24" height="6" rx="3" fill="${acc}"/>`}
+  if(o.boxes){s+=`<rect x="32" y="122" width="86" height="34" rx="4" fill="none" stroke="${acc}" stroke-width="2" stroke-dasharray="5 3"/><rect x="122" y="122" width="86" height="34" rx="4" fill="none" stroke="${acc}" stroke-width="2" stroke-dasharray="5 3"/>`}
+  if(w)return s;
+  return `<svg viewBox="0 0 240 166" role="img" aria-label="Schéma postýlky">${s}</svg>`;
+}
+document.getElementById('hero').innerHTML=`<svg viewBox="-20 -8 290 222" role="img" aria-label="Schéma postýlky s kótou 120 × 60 cm">${crib({drop:1,drawer:1,white:0},1)}
+ <path d="M26 182 H214 M26 175 V189 M214 175 V189" stroke="var(--ink)" stroke-width="1.4"/>
+ <text x="120" y="204" text-anchor="middle" font-family="Figtree,sans-serif" font-size="14" font-weight="700" fill="var(--ink)">vnitřní rozměr 120 × 60 cm</text>
+ <text x="246" y="46" font-family="Figtree,sans-serif" font-size="11" fill="var(--acc)" text-anchor="end">stahovací bok</text>
+ <text x="246" y="140" font-family="Figtree,sans-serif" font-size="11" fill="var(--acc)" text-anchor="end">úložný prostor</text></svg>`;
+
+const yn=(v,t)=>`<span class="${v?'y':'n'}">${v?'✔':'✖'}</span> ${t||''}`;
+const render=()=>{
+  const fd=fDrop.checked,fs=fStore.checked,fn=fNorm.checked;
+  const ok=m=>(!fd||m.drop)&&(!fs||m.storeOk)&&(!fn||m.normOk);
+  document.querySelector('#tbl tbody').innerHTML=M.filter(ok).map(m=>`<tr><td><a href="#${m.id}"><b>${m.name}</b></a></td><td class="num">${m.price}</td><td><span class="y">✔</span> 120 × 60</td><td>${yn(m.drop)}</td><td>${yn(m.storeOk,m.store)}</td><td>${m.mat}</td><td>${m.rost}</td><td>${yn(m.normOk,m.norm)}</td><td>${m.avail}</td></tr>`).join('')||'<tr><td colspan="9" class="m">Filtrům nevyhovuje žádný model.</td></tr>';
+  document.getElementById('cards').innerHTML=M.filter(ok).map(m=>`<article class="card" id="${m.id}">
+   <div class="pic">${crib(m.svg)}</div>
+   <div><h3>${m.name}</h3><div class="m" style="font-size:14px">${m.sub}</div></div>
+   <div class="price">${m.price} <small>${m.psub}</small></div>
+   <div class="tags"><span class="tag on">120 × 60 cm</span>${m.drop?'<span class="tag on">stahovací bok</span>':''}${m.storeOk?'<span class="tag on">úložný prostor</span>':''}${m.normOk?'<span class="tag">EN 716</span>':'<span class="tag">norma neuvedena</span>'}</div>
+   <dl>${m.dl.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl>
+   <div class="pc"><div><h4 class="y">Silné stránky</h4><ul>${m.plus.map(x=>`<li>${x}</li>`).join('')}</ul></div><div><h4 class="n">Slabiny</h4><ul>${m.minus.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>
+   <div class="rev"><b>Recenze:</b> ${m.rev}</div>
+   <div class="links">${m.links.map(([t,u,main])=>`<a class="btn${main?' main':''}" href="${u}" target="_blank" rel="noopener">${t}</a>`).join('')}</div>
+  </article>`).join('');
+};
+const fDrop=document.getElementById('fDrop'),fStore=document.getElementById('fStore'),fNorm=document.getElementById('fNorm');
+[fDrop,fStore,fNorm].forEach(e=>e.addEventListener('change',render));
+render();
+}
+</script>
+</body>
+</html>
